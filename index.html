@@ -1,257 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <title>NJUE WEB|DESIGN</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-/* ===== RESET & BASE ===== */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-image: url("https://i.imgur.com/ZJ4sXN2.jpeg");
-  background-color: grey;
-  line-height: 1.6;
-   text-align: center;
-   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-.nav {
-  height: 350px;
-  background-image: url("https://i.imgur.com/cdPVyhw.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items:center;
-  justify-content: center;
-  gap: 20px;
-}
-  
-  
-  .hero {
-  position: relative;
-  z-index: 2;
-  color: white;
-  text-align: left;
-  max-width: 600px;
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Njue Kennedy — Web & Application Developer building modern, responsive websites and web applications.">
+  <meta name="theme-color" content="#08111f">
+  <meta property="og:title" content="Njue Kennedy | Web & Application Developer">
+  <meta property="og:description" content="Modern, responsive websites and web applications built for real business needs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kennedymutuginjue-png.github.io/Njue-portfolio-/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Njue Kennedy | Web & Application Developer</title>
+</head>
+<body>
+  <header class="site-header" id="home">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#home" aria-label="Njue Kennedy home"><span>NK</span><strong>Njue Kennedy</strong></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#services">Services</a><a href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Let’s Work Together <span>↗</span></a>
+      </div>
+    </nav>
+  </header>
 
-/* ===== PAGE WIDTH ===== */
-body > * {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-
-
-}
-/* ===== HEADINGS ===== */
-h1 {
-  background-image: url(https://i.imgur.com/ZJ4sXN2.jpeg);
-  font-size: 30px;
-  padding:10px ;
-  color: white;
-  margin: 0 auto;
-  
-  
-}
-
-h2 {
-  font-size: 30px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  color:white;
-  background-color: green;
-}
-
-h3 {
-  font-size: 24px;
-  margin-top: 25px;
-  margin-bottom: 5px;
-  color: green;
-}
-
-h4 {
-  margin-bottom: 5px;
-  color: green;
-}
-
-/* ===== NAVIGATION ===== */
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 30px 0;
-}
-
-nav li {
-  display: inline;
-  margin-right: 15px;
-  color: white;
-  cursor: pointer;
-  background-color: green;
-  font-size: 15px;
-  padding:6px;
-  margin:12px;
-  
-}
-
-/* ===== PARAGRAPHS ===== */
-p {
-  font-size: 16px;
-  margin-bottom: 15px;
-  color: white;
-}
-
-/* ===== BUTTON ===== */
-button {
-  background-color: white;
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: white;
-}
-
-/* ===== SECTIONS ===== */
-section {
-  margin-top: 50px;
-  padding-top: 20px;
-  border-top: 1px white;
-}
-
-/* ===== PROJECTS ===== */
-figure {
-  margin: 30px 0;
-}
-.cafe{
-  background-image: url("https://i.imgur.com/ImbVcIv.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items:center;
-  justify-content: center;
-}
-.safaris{
-  background-image: url("https://i.imgur.com/aFY4RYu.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items:center;
-  justify-content: center;
-}
-
-figure img {
-  display: block;
-  border: 1px solid white;
-  max-width: 100%;
-}
-
-figcaption {
-  margin-top: 8px;
-  color: silver;
-}
-
-/* ===== LINKS ===== */
-a {
-  color: silver;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  font-size: 14px;
-  color: white;
-  margin-top: 60px;
-  padding: 20px 0;
-  border-top: 1px solid black;
-}
-</style>
-  </head>
-  <body>
-    <h1>NJUE WEB|DESIGN</h1>
-    <section class="nav">
-    <div class="hero">
-    <nav>
-      <ul>
-        <a href="#about"><li>About</li>
-        </a>
-      <a href="#skill"> <li>Skills</li>
-      </a>
-     <a href="#con"><li>Contact</li>
-     </a>
-      </ul>
-      </nav>
-    
-    
-   <h1 style="background-image:none;color:black;"> WEB|DEVELOPER.</h1>
-    <h5 style="font-size:18px;">I build clean and simple websites using HTML and CSS.</h5>
-    <a href="#pj">
-    <button> view projects</button></a>
-  
-    </div>
-    <img width="150" height="160"
-    src="https://i.imgur.com/345Wp5U.png">
+  <main>
+    <section class="hero container">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> Available for freelance opportunities</p>
+        <h1>I Build Modern <em>Web &amp; Application</em> Experiences.</h1>
+        <p class="hero-text">Web and application developer focused on building responsive, practical and polished digital products that solve real business problems.</p>
+        <div class="button-row"><a class="button primary" href="#projects">View My Projects <span>↓</span></a><a class="button secondary" href="#contact">Let’s Work Together <span>↗</span></a></div>
+        <div class="social-row"><span>Find me on</span><a href="https://github.com/kennedymutuginjue-png" target="_blank" rel="noopener">GitHub ↗</a><a href="https://www.upwork.com/freelancers/~01defb28e55246c286" target="_blank" rel="noopener">Upwork ↗</a></div>
+      </div>
+      <div class="hero-visual" aria-label="Abstract developer workspace visual">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="code-window"><div class="window-bar"><i></i><i></i><i></i><span>developer.js</span></div><pre><code><b>const</b> developer = {
+  name: <mark>"Njue Kennedy"</mark>,
+  role: <mark>"Web Developer"</mark>,
+  focus: [
+    <mark>"useful products"</mark>,
+    <mark>"clean interfaces"</mark>
+  ],
+  <b>build</b>: () =&gt; <mark>"ship with purpose"</mark>
+};</code></pre><div class="code-cursor"></div></div>
+        <div class="float-card card-top"><span>✦</span><div><small>Currently building</small><strong>Digital products</strong></div></div>
+        <div class="float-card card-bottom"><strong>100%</strong><small>Responsive<br>by design</small></div>
+      </div>
     </section>
-    <hr>
-    <section>
-      <h2 id="about">ABOUT</h2>
-      <p>I am a web developer focused on creating clean and well-structured websites.</p>
-      <h3>What I'll do for you</h3>
-      <p>I build simple, responsive web pages using HTML and CSS, with attention to layout, spacing, and readability.</p>
-      <h3>My Goal</h3>
-      <p>My goal is to help individuals and small businesses present their ideas clearly through modern and user-friendly websites.</p>
-     <hr>
-     <h2 style="margin-top:0px;" id="skill"> Skills To Offer</h2>
-      <h3>HTML</h3>
-      <p>I use HTML to structure web pages clearly, making content easy to read and navigate for visitors.</p>
-      <h3>CSS</h3>
-      <p>I use CSS to style websites with clean colors, readable text, and proper spacing, creating a pleasant user experience.</p>
-      <h3>Basic Layouts</h3>
-      <p>I create organized page layouts that guide visitors smoothly from one section to another without confusion.</p>
-      <h3>Responsive Design</h3>
-      <p>I build websites that adapt well to different screen sizes, ensuring users can access content comfortably on phones and desktops.</p>
-      <hr>
-      <h2 id="pj">PROJECTS</h2>
-      <h3>Coffee Cafe Page</h3>
-        <p>A modern coffee café page designed to showcase the café’s brand, menu, and ambiance. The project focuses on clean layout, simple navigation, and a visually appealing design using HTML and CSS.</p>
-      <figure class="cafe">
-      <a href="https://kennedymutuginjue-png.github.io/Coffee-cafe-page/" target="_blank">
-      <img width="250" height="300"
-      src="https://i.imgur.com/HLUk5yx.jpeg" alt ="image of coffe cafe page">
-      </figure>
-      <button>Coffee-cafe-page</button></a>
-      
-      <hr>
-      <h3>Kenya Tours</h3>
-      <p>A safari and tours website designed to showcase wildlife experiences, travel destinations, and adventure packages. The project focuses on a clean layout, strong visuals, and simple navigation using HTML and CSS.</p>
-      <figure class="safaris">
-      <a hfer="https://kennedymutuginjue-png.github.io/Safaris/" target="_blank">
-      <img width="350" height="300"
-      src="https://i.imgur.com/QFav14h.jpeg" alt="kenya safari tours"></a>
-      </section>
-      <a href="https://kennedymutuginjue-png.github.io/Safaris/">
-      <button> safari page</button></a>
-      </figure>
-    
-    <section>
-    <h2 id="con">Let's Connect</h2>
-      <h4>Email:</h4><a href="https://mail.google.com/mail/?view=cm&to=kennedymutuginjue@gmail.com&su=Business%20Inquiry&body=Hello">kennedymutuginjue@gmail.com</a>
-      <h4>Whatsapp:</h4><a href="https://wa.me/254793553192?text=Hello">+254793553192</a>
-      <h4>Github:</h4><a href="https://github.com/kennedymutuginjue-png">github.com</a>
-    </section>
-    <footer>
-  <p>&copy; 2026 Kennedy Mutuginjue. All rights reserved.</p>
-</footer>
-  </body>
+    <div class="tech-strip"><div class="container tech-list"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span><span>Responsive Design</span><span>Web Applications</span></div></div>
+
+    <section class="section container about" id="about"><div class="section-label">01 / About me</div><div class="about-grid"><div><h2>Building digital<br><em>products that work.</em></h2></div><div><p class="lead">I’m a Web &amp; Application Developer who enjoys turning ideas into functional, modern and user-friendly digital experiences.</p><p>I focus on creating responsive interfaces, interactive applications and practical systems designed around real user needs.</p><p>My work includes SaaS platforms, restaurant management systems and real-estate applications.</p></div></div><div class="stats"><div><strong>3</strong><span>Featured Projects</span></div><div><strong>100%</strong><span>Responsive Design</span></div><div><strong>24/7</strong><span>Project Accessibility</span></div></div></section>
+
+    <section class="section container" id="skills"><div class="section-label">02 / Capabilities</div><div class="section-heading"><h2>Skills that turn<br><em>ideas into products.</em></h2><p>A practical toolkit for creating thoughtful experiences from first interface to working application.</p></div><div class="skill-grid">
+      <article class="skill-card"><div class="icon">⌘</div><h3>Frontend</h3><ul><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Responsive Design</li><li>UI/UX</li><li>Modern Web Interfaces</li></ul></article>
+      <article class="skill-card"><div class="icon">▣</div><h3>Application Development</h3><ul><li>Web Applications</li><li>CRUD Systems</li><li>Authentication</li><li>Dashboards</li><li>Forms &amp; Validation</li><li>Search &amp; Filtering</li></ul></article>
+      <article class="skill-card"><div class="icon">⌁</div><h3>Backend &amp; Data</h3><ul><li>Database-driven Applications</li><li>User Authentication</li><li>Data Management</li><li>API Integration</li></ul></article>
+      <article class="skill-card"><div class="icon">◈</div><h3>Tools &amp; Platforms</h3><ul><li>Git</li><li>GitHub</li><li>Base44</li><li>GitHub Pages</li></ul></article>
+    </div></section>
+
+    <section class="section projects-section" id="projects"><div class="container"><div class="section-label">03 / Selected work</div><div class="section-heading"><h2>Featured <em>Projects</em></h2><p>Explore some of the applications I’ve built.</p></div><div class="project-grid">
+      <article class="project-card"><div class="project-preview preview-invoice"><img src="assets/images/invoiceflow.png" alt="InvoiceFlow application preview" loading="lazy" onerror="this.style.display='none'"><div class="preview-ui"><span class="mini-logo">i</span><span class="mini-title">InvoiceFlow</span><div class="mini-chart"><i></i><i></i><i></i><i></i><i></i></div><div class="mini-panels"><b></b><b></b><b></b></div></div></div><div class="project-body"><div class="project-meta"><span>SaaS / Business Management</span><span>01</span></div><h3>InvoiceFlow</h3><p>InvoiceFlow is a modern invoicing and expense management platform designed for small businesses. It provides tools for creating invoices, managing clients, tracking expenses, monitoring payments and viewing financial reports.</p><ul class="feature-list"><li>Invoice management</li><li>Client management</li><li>Expense tracking</li><li>Financial dashboard</li><li>Authentication</li><li>Reports &amp; analytics</li></ul><div class="tags"><span>Web App</span><span>Dashboard</span><span>CRUD</span></div><a class="project-link" href="https://smart-invoice-flow-thick.base44.app" target="_blank" rel="noopener">View Live Demo <span>↗</span></a></div></article>
+      <article class="project-card"><div class="project-preview preview-dine"><img src="assets/images/dineflow.png" alt="DineFlow application preview" loading="lazy" onerror="this.style.display='none'"><div class="preview-ui restaurant"><span class="mini-logo">D</span><span class="mini-title">DineFlow <small>Good food, made simple.</small></span><div class="food-card"><i></i><b></b><b></b></div><div class="food-card"><i></i><b></b><b></b></div></div></div><div class="project-body"><div class="project-meta"><span>Restaurant Ordering &amp; Management</span><span>02</span></div><h3>DineFlow</h3><p>DineFlow is a complete restaurant ordering and management platform with a customer-facing ordering experience and an administrative dashboard for managing orders, menus, customers and restaurant operations.</p><ul class="feature-list"><li>Online food ordering</li><li>Shopping cart &amp; checkout</li><li>Order tracking</li><li>Menu management</li><li>Coupons &amp; reviews</li><li>Sales analytics</li></ul><div class="tags"><span>Web App</span><span>Ordering</span><span>Analytics</span></div><a class="project-link" href="https://meek-dine-flow-go.base44.app" target="_blank" rel="noopener">View Live Demo <span>↗</span></a></div></article>
+      <article class="project-card"><div class="project-preview preview-estate"><img src="assets/images/estatehub.png" alt="EstateHub application preview" loading="lazy" onerror="this.style.display='none'"><div class="preview-ui estate"><span class="mini-logo">E</span><span class="mini-title">EstateHub <small>Find your next place.</small></span><div class="property"><i></i><div><b></b><b></b></div></div><div class="property"><i></i><div><b></b><b></b></div></div></div></div><div class="project-body"><div class="project-meta"><span>Real Estate Marketplace</span><span>03</span></div><h3>EstateHub</h3><p>EstateHub is a real-estate marketplace that allows users to discover properties, search and filter listings, save properties, contact agents and schedule property viewings.</p><ul class="feature-list"><li>Property listings &amp; filters</li><li>Favorites &amp; details</li><li>Agent profiles</li><li>Viewing scheduling</li><li>Messaging &amp; lead management</li><li>Admin dashboard &amp; analytics</li></ul><div class="tags"><span>Marketplace</span><span>Search</span><span>Dashboard</span></div><a class="project-link" href="https://estate-hub-kenya.base44.app" target="_blank" rel="noopener">View Live Demo <span>↗</span></a></div></article>
+    </div></div></section>
+
+    <section class="section container" id="services"><div class="section-label">04 / Services</div><div class="section-heading"><h2>What I <em>Can Build</em></h2><p>Flexible, focused development for ideas that deserve to be useful in the real world.</p></div><div class="service-grid"><article><span>01</span><h3>Business Websites</h3><p>Modern responsive websites for businesses, professionals and organizations.</p></article><article><span>02</span><h3>Web Applications</h3><p>Interactive web applications with authentication, dashboards, forms and database functionality.</p></article><article><span>03</span><h3>Business Management Systems</h3><p>Custom systems for managing customers, orders, invoices, inventory and business operations.</p></article><article><span>04</span><h3>Responsive UI</h3><p>Modern interfaces that work across desktop, tablet and mobile devices.</p></article></div></section>
+
+    <section class="why"><div class="container"><div class="section-label">05 / The difference</div><div class="why-grid"><h2>Built with purpose,<br><em>not just pixels.</em></h2><div class="why-list"><div><b>User-Focused</b><p>I focus on creating interfaces that are clear and easy to use.</p></div><div><b>Responsive</b><p>Applications are designed to work across different screen sizes.</p></div><div><b>Practical</b><p>I build features around real business needs rather than unnecessary complexity.</p></div><div><b>Detail-Oriented</b><p>I pay attention to layout, usability, consistency and overall presentation.</p></div></div></div></div></section>
+
+    <section class="section container contact" id="contact"><div class="section-label">06 / Start a conversation</div><div class="contact-grid"><div><h2>Have a project<br><em>in mind?</em></h2><p class="lead">Let’s discuss your idea and explore how I can turn it into a functional web experience.</p><div class="contact-links"><a href="mailto:kennedymutuginjue@gmail.com"><span>Email</span>kennedymutuginjue@gmail.com <b>↗</b></a><a href="https://github.com/kennedymutuginjue-png" target="_blank" rel="noopener"><span>GitHub</span>kennedymutuginjue-png <b>↗</b></a><a href="https://www.upwork.com/freelancers/~01defb28e55246c286" target="_blank" rel="noopener"><span>Upwork</span>View my profile <b>↗</b></a><a href="https://www.linkedin.com/in/kennedy-mutugi-njue-671b7a438" target="_blank" rel="noopener"><span>LinkedIn</span>kennedy-mutugi-njue <b>↗</b></a></div></div><form class="contact-form" action="mailto:kennedymutuginjue@gmail.com" method="post" enctype="text/plain"><label for="name">Name<input id="name" name="Name" type="text" placeholder="Your name" required></label><label for="email">Email<input id="email" name="Email" type="email" placeholder="you@example.com" required></label><label for="project">Project type<select id="project" name="Project type"><option>Business website</option><option>Web application</option><option>Management system</option><option>Responsive UI</option><option>Other</option></select></label><label for="message">Message<textarea id="message" name="Message" rows="5" placeholder="Tell me a little about your project..." required></textarea></label><button class="button primary" type="submit">Send Message <span>↗</span></button><small>This form opens your email client to send the message.</small></form></div></section>
+  </main>
+  <footer><div class="container footer-top"><a class="brand" href="#home"><span>NK</span><strong>Njue Kennedy</strong></a><p>Web &amp; Application Developer</p><div class="footer-links"><a href="https://github.com/kennedymutuginjue-png" target="_blank" rel="noopener">GitHub</a><a href="https://www.upwork.com/freelancers/~01defb28e55246c286" target="_blank" rel="noopener">Upwork</a><a href="https://www.linkedin.com/in/kennedy-mutugi-njue-671b7a438" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:kennedymutuginjue@gmail.com">Email</a></div></div><div class="container copyright"><span>© 2026 Njue Kennedy. All rights reserved.</span><a href="#home">Back to top ↑</a></div></footer>
+  <script src="script.js"></script>
+</body>
 </html>
