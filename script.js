@@ -1,3 +1,10 @@
+const CONTACT_CONFIG = Object.freeze({
+  email: 'kennedymutuginjue@gmail.com',
+  whatsappNumber: '254793553192',
+  whatsappUrl: 'https://wa.me/254793553192',
+  linkedinUrl: 'https://www.linkedin.com'
+});
+
 const root = document.documentElement;
 const themeToggle = document.querySelector('.theme-toggle');
 const menuToggle = document.querySelector('.menu-toggle');
@@ -38,56 +45,50 @@ document.querySelectorAll('a[href="#home"]').forEach((link) => link.addEventList
   history.replaceState(null, '', '#home');
 }));
 
-// Make all CV links download the exact PDF stored in assets.
+// Keep all CV links pointed at the existing asset and make them download it.
 document.querySelectorAll('a[href*="CV.pdf"]').forEach((link) => {
   link.href = './assets/Njue_Kennedy_Web_CV.pdf';
   link.download = 'Njue_Kennedy_Web_CV.pdf';
 });
 
-// Render the complete skills catalogue before Services.
-const servicesSection = document.querySelector('#services');
-if (servicesSection && !document.querySelector('#skills')) {
-  const skillsSection = document.createElement('section');
-  skillsSection.className = 'section container skills-catalogue';
-  skillsSection.id = 'skills';
-  skillsSection.innerHTML = `
-    <div class="section-intro reveal"><p class="section-number">02 / SKILLS</p><h2>Tools for turning<br><em>ideas into products.</em></h2><p class="section-summary">A practical toolkit spanning frontend development, web applications, business systems and integrations.</p></div>
-    <div class="skills-catalogue-grid">
-      <article class="skill-group reveal"><span class="skill-group-number">01</span><h3>Frontend Development</h3><ul><li>HTML5 &amp; Semantic HTML</li><li>CSS3 &amp; Responsive Design</li><li>JavaScript (ES6+)</li><li>React.js</li><li>UI/UX Implementation</li></ul></article>
-      <article class="skill-group reveal"><span class="skill-group-number">02</span><h3>Web Application Development</h3><ul><li>Interactive Dashboards</li><li>Authentication &amp; User Management</li><li>CRUD Systems</li><li>Forms &amp; Workflow Automation</li><li>Responsive Web Applications</li></ul></article>
-      <article class="skill-group reveal"><span class="skill-group-number">03</span><h3>Business &amp; E-Commerce Solutions</h3><ul><li>E-Commerce Platforms</li><li>Restaurant Ordering Systems</li><li>Invoicing &amp; Expense Management</li><li>Client &amp; Data Management</li><li>Sales &amp; Analytics Dashboards</li></ul></article>
-      <article class="skill-group reveal"><span class="skill-group-number">04</span><h3>APIs &amp; Integrations</h3><ul><li>REST API Integration</li><li>Payment API Integration</li><li>Third-Party Service Integration</li><li>Checkout &amp; Payment Flows</li></ul></article>
-      <article class="skill-group reveal"><span class="skill-group-number">05</span><h3>Development Tools</h3><ul><li>Git &amp; GitHub</li><li>GitHub Pages</li><li>Cross-Browser Testing</li><li>Performance Optimization</li><li>Mobile-First Development</li></ul></article>
-    </div>`;
-  servicesSection.before(skillsSection);
+function createContactLink(className, label, href, external = false) {
+  const link = document.createElement('a');
+  link.className = className;
+  link.href = href;
+  link.textContent = label;
+  if (external) {
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  }
+  return link;
 }
 
-// Render all six services, replacing the shorter three-item list.
-const serviceList = servicesSection?.querySelector('.service-list');
-if (serviceList) {
-  const services = [
-    ['01', 'Website Development', 'Professional, responsive websites for businesses, portfolios, agencies and personal brands.'],
-    ['02', 'Web Application Development', 'Interactive web applications, dashboards, authentication systems and custom business workflows.'],
-    ['03', 'E-Commerce & Ordering Platforms', 'Online stores, restaurant ordering systems, product management, carts, checkout and order management.'],
-    ['04', 'Business Management Systems', 'Custom platforms for invoicing, expense tracking, client management, reporting and everyday business operations.'],
-    ['05', 'Payment & API Integrations', 'Integration of supported payment providers, APIs and third-party services into websites and web applications.'],
-    ['06', 'Website & Application Maintenance', 'Bug fixing, performance improvements, feature updates, responsive improvements and ongoing technical support.']
-  ];
-  serviceList.innerHTML = services.map(([number, title, description]) => `<article class="service-item reveal"><span>${number}</span><div><h3>${title}</h3><p>${description}</p></div><b>↗</b></article>`).join('');
+// Add a prominent Hire Me CTA to the hero without duplicating it on reloads.
+const heroActions = document.querySelector('.hero .button-row, .hero-actions');
+if (heroActions && !heroActions.querySelector('.hire-me-button')) {
+  const hireButton = createContactLink('button secondary hire-me-button', 'Hire me ↗', '#contact');
+  heroActions.append(hireButton);
 }
 
-const projectFeatures = [
-  ['Invoice creation and management', 'Client records and expense tracking', 'Billing activity monitoring'],
-  ['Mobile-first menu browsing', 'Fast customer ordering flow', 'Clear restaurant checkout experience'],
-  ['Home and apartment discovery', 'Office and commercial listings', 'Kenya-focused property browsing']
-];
-document.querySelectorAll('.project-card').forEach((card, index) => {
-  const info = card.querySelector('.project-info');
-  if (!info || !projectFeatures[index] || info.querySelector('.project-features')) return;
-  const list = document.createElement('ul');
-  list.className = 'project-features';
-  list.innerHTML = projectFeatures[index].map((feature) => `<li>${feature}</li>`).join('');
-  info.querySelector('p')?.after(list);
+// Ensure the contact area contains both email and WhatsApp actions.
+const contactBox = document.querySelector('#contact .contact-box, #contact .contact-links');
+if (contactBox) {
+  const emailLink = contactBox.querySelector('a[href^="mailto:"]');
+  if (emailLink) {
+    emailLink.href = `mailto:${CONTACT_CONFIG.email}`;
+    emailLink.textContent = 'Email me ↗';
+  } else if (!contactBox.querySelector('.contact-email-button')) {
+    contactBox.prepend(createContactLink('button primary contact-email-button', 'Email me ↗', `mailto:${CONTACT_CONFIG.email}`));
+  }
+  if (!contactBox.querySelector('.whatsapp-button')) {
+    contactBox.append(createContactLink('button whatsapp-button', 'WhatsApp me ↗', CONTACT_CONFIG.whatsappUrl, true));
+  }
+}
+
+// Also make any existing email text or mailto links use the requested address.
+document.querySelectorAll('a[href^="mailto:"], [data-contact-email]').forEach((element) => {
+  if (element.tagName === 'A') element.href = `mailto:${CONTACT_CONFIG.email}`;
+  if (element.dataset) element.textContent = CONTACT_CONFIG.email;
 });
 
 const revealItems = document.querySelectorAll('.reveal');
