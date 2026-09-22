@@ -48,10 +48,19 @@ document.querySelectorAll('a[href="#home"]').forEach((link) => link.addEventList
   history.replaceState(null, '', '#home');
 }));
 
-// Keep all CV links pointed at the existing asset and make them download it.
+// Show the full CV name on the page and open it in a new tab instead of downloading it.
 document.querySelectorAll('a[href*="CV.pdf"]').forEach((link) => {
   link.href = './assets/Njue_Kennedy_Web_CV.pdf';
-  link.download = 'Njue_Kennedy_Web_CV.pdf';
+  link.removeAttribute('download');
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  const label = link.querySelector('span');
+  if (label) {
+    link.firstChild.textContent = 'Curriculum Vitae (CV) ';
+    label.textContent = '↗';
+  } else {
+    link.textContent = 'Curriculum Vitae (CV) ↗';
+  }
 });
 
 function createContactLink(className, label, href, external = false) {
