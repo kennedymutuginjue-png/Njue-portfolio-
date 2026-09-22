@@ -45,6 +45,67 @@ document.querySelectorAll('a[href="#home"]').forEach((link) => link.addEventList
   history.replaceState(null, '', '#home');
 }));
 
+// Add a polished Skills destination and section without duplicating either on reloads.
+const skills = [
+  ['Frontend Development', 'HTML5 & Semantic HTML', 'CSS3 & Responsive Design', 'JavaScript (ES6+)', 'React.js', 'UI/UX Implementation'],
+  ['Web Application Development', 'Interactive Dashboards', 'Authentication & User Management', 'CRUD Systems', 'Forms & Workflow Automation', 'Responsive Web Applications'],
+  ['Business & E-Commerce Solutions', 'E-Commerce Platforms', 'Restaurant Ordering Systems', 'Invoicing & Expense Management', 'Client & Data Management', 'Sales & Analytics Dashboards'],
+  ['APIs & Integrations', 'REST API Integration', 'Payment API Integration', 'Third-Party Service Integration', 'Checkout & Payment Flows'],
+  ['Development Tools', 'Git & GitHub', 'GitHub Pages', 'Cross-Browser Testing', 'Performance Optimization', 'Mobile-First Development']
+];
+
+if (navLinks && !navLinks.querySelector('a[href="#skills"]')) {
+  const skillsLink = document.createElement('a');
+  skillsLink.href = '#skills';
+  skillsLink.textContent = 'Skills';
+  skillsLink.className = 'nav-skill';
+  navLinks.insertBefore(skillsLink, navLinks.querySelector('.nav-cv'));
+}
+
+if (!document.querySelector('#skills')) {
+  const skillsSection = document.createElement('section');
+  skillsSection.className = 'section container skills-section';
+  skillsSection.id = 'skills';
+  skillsSection.innerHTML = `
+    <div class="section-intro reveal">
+      <p class="section-number">02 / SKILLS</p>
+      <h2>Built for ideas<br>that <em>move forward.</em></h2>
+    </div>
+    <div class="skills-grid">
+      ${skills.map(([title, ...items]) => `
+        <article class="skill-card reveal">
+          <div class="skill-card-heading"><span class="skill-icon">✦</span><h3>${title}</h3></div>
+          <ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul>
+        </article>
+      `).join('')}
+    </div>`;
+  document.querySelector('#services')?.before(skillsSection);
+}
+
+if (!document.querySelector('#portfolio-enhancements')) {
+  const enhancementStyles = document.createElement('style');
+  enhancementStyles.id = 'portfolio-enhancements';
+  enhancementStyles.textContent = `
+    .nav-links { gap: 1.25rem; }
+    .nav-links a { position: relative; font-size: .92rem; font-weight: 600; }
+    .nav-links a:not(.nav-cv)::after { content: ''; position: absolute; left: 0; right: 0; bottom: -.45rem; height: 2px; background: var(--lime); transform: scaleX(0); transform-origin: center; transition: transform .2s ease; }
+    .nav-links a:not(.nav-cv):hover::after, .nav-links a.active::after { transform: scaleX(1); }
+    .nav-cv { padding: .58rem .9rem !important; border-color: var(--lime) !important; background: color-mix(in srgb, var(--lime) 12%, transparent); }
+    .skills-section { scroll-margin-top: 90px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
+    .skill-card { padding: 1.35rem; border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--surface) 78%, transparent); transition: transform .25s, border-color .25s, box-shadow .25s; }
+    .skill-card:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--lime) 65%, var(--line)); box-shadow: var(--shadow); }
+    .skill-card-heading { display: flex; align-items: flex-start; gap: .7rem; min-height: 3.2rem; }
+    .skill-icon { color: var(--lime); font-size: 1.1rem; }
+    .skill-card h3 { margin: 0; font: 600 1.08rem/1.2 "Space Grotesk", sans-serif; }
+    .skill-card ul { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.1rem 0 0; padding: 0; list-style: none; }
+    .skill-card li { padding: .35rem .55rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .76rem; line-height: 1.25; }
+    @media (max-width: 850px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 650px) { .skills-grid { grid-template-columns: 1fr; } .nav-links a:not(.nav-cv)::after { display: none; } }
+  `;
+  document.head.append(enhancementStyles);
+}
+
 // Keep all CV links pointed at the existing asset and make them download it.
 document.querySelectorAll('a[href*="CV.pdf"]').forEach((link) => {
   link.href = './assets/Njue_Kennedy_Web_CV.pdf';
@@ -117,3 +178,17 @@ window.addEventListener('scroll', () => {
     ticking = false;
   });
 }, { passive: true });
+
+// Highlight the current navigation destination as the visitor scrolls.
+const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+const navigableSections = sectionLinks.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+if ('IntersectionObserver' in window) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        sectionLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  navigableSections.forEach((section) => sectionObserver.observe(section));
+}
