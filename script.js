@@ -21,6 +21,25 @@ if (menuToggle && navLinks) {
   });
 }
 
+// Reveal animated sections as they enter the viewport. The fallback keeps
+// the page visible in browsers without IntersectionObserver support.
+const revealItems = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealItems.forEach((item) => revealObserver.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add('visible'));
+}
+
 // Keep the Home link anchored to the top of the portfolio.
 document.querySelectorAll('a[href="#home"]').forEach((link) => {
   link.addEventListener('click', (event) => {
