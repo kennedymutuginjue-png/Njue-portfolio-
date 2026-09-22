@@ -82,6 +82,20 @@ if (!document.querySelector('#skills')) {
   document.querySelector('#services')?.before(skillsSection);
 }
 
+// Add payment integrations to Services with a clear client-focused explanation.
+const serviceList = document.querySelector('#services .service-list');
+if (serviceList && !serviceList.querySelector('.payment-service')) {
+  const paymentService = document.createElement('article');
+  paymentService.className = 'service-item reveal payment-service';
+  paymentService.innerHTML = `
+    <span>04</span>
+    <div>
+      <h3>Payment & API integrations</h3>
+      <p>Secure, user-friendly payment flows that connect your website or application to supported payment providers. I can integrate checkout pages, payment requests, order confirmation, transaction status updates and third-party APIs so customers can pay smoothly while your business keeps reliable records.</p>
+    </div>`;
+  serviceList.append(paymentService);
+}
+
 if (!document.querySelector('#portfolio-enhancements')) {
   const enhancementStyles = document.createElement('style');
   enhancementStyles.id = 'portfolio-enhancements';
