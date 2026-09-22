@@ -38,13 +38,17 @@ document.querySelectorAll('a[href="#home"]').forEach((link) => link.addEventList
   history.replaceState(null, '', '#home');
 }));
 
-// Make every CV CTA download the repository PDF with a clear filename.
-document.querySelectorAll('a[href*="Njue_Kennedy_Web_CV.pdf"]').forEach((link) => {
+// Ensure every CV button downloads the exact PDF file in assets.
+document.querySelectorAll('a[href*="Njue_Kennedy_Web_CV.pdf"], a[href*="Njue-Kennedy-Web-CV.pdf"]').forEach((link) => {
+  const href = link.getAttribute('href');
+  if (href && !href.startsWith('http')) {
+    link.setAttribute('href', './assets/Njue_Kennedy_Web_CV.pdf');
+  }
   link.setAttribute('download', 'Njue_Kennedy_Web_CV.pdf');
   link.setAttribute('aria-label', 'Download Njue Kennedy CV as a PDF');
 });
 
-// Add concise feature lists to each featured project card.
+// Add feature bullets to each project card.
 const projectFeatures = [
   ['Invoice creation and management', 'Client records and expense tracking', 'Billing activity monitoring'],
   ['Mobile-first menu browsing', 'Fast customer ordering flow', 'Clear restaurant checkout experience'],
